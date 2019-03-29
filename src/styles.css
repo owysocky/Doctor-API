@@ -4,3 +4,12 @@ ul, li {
 .table{
   display: none;
 }
+
+.well{
+  background-color: #ECECEC;
+  margin: 2%;
+}
+
+h1{
+  text-align: center;
+}

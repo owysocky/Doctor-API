@@ -64,9 +64,7 @@ export class DocService{
        let result = "";
        for (let i = 0; i < response.data.length; i++) {
          if(response.data[i].practices[0].website){
-          let temp = "";
-          temp += response.data[i].practices[0].website;
-          result = "<li>" + temp.slice(0,40) + "<li><br>";
+          result = "<li>" + response.data[i].practices[0].website + "<li><br>";
          }else{
            result += "<li>None<li><br>";
          }

@@ -1,14 +1,19 @@
 # _Doctor Search_
 
-#### _3/26/2019_
+#### _3/29/2019_
 
 #### By _**Olha Wysocky and Jared Hanson**_
 
 ## Description
 _This is a website to serch for doctors in Portland area._
 
-## Known Bugs
+## Specs
+_User inputs name, webpage outputs all doctors with the name._
+_User inputs name and count, webpage outputs exact amount of doctors with the name._
+_User inputs practice, webpage outputs all doctors with the practice._
+_User inputs practice and count, webpage outputs exact amount of doctors with the practice._
 
+## Known Bugs
 _No known bugs._
 
 ## Installation Requirements
