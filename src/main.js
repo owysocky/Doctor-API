@@ -10,16 +10,15 @@ $(document).ready(function() {
     event.preventDefault();
     let name = $('#name').val();
     let count = $('#count').val();
-console.log(name);
     let docService = new DocService();
     let promise = docService.getDocsByName(name, count);
 
     promise.then(function(response) {
       let body = JSON.parse(response);
-      let docService = new DocService();
       $('.name').prepend(docService.printName(body));
       $('.address').prepend(docService.printAddress(body));
       $('.accepts').prepend(docService.printAcceptPat(body));
+      $('.phone').prepend(docService.printPhone(body));
     }, function(error) {
       $('.error').text(`There was an error processing your request: ${error.message}`);
     });

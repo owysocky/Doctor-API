@@ -27,7 +27,7 @@ _No known bugs._
 ## API Requirements
 * _Create your account at developer.betterdoctor.com._
 * _Get the API key._
-* _Create an .env file in the root directory of the project, and insert "API_KEY = YOUR_API_KEY" there._
+* _Create an .env file in the root directory of the project, and insert "exports.apiKey = YOUR_API_KEY" there._
 
 ## Technologies Used
 
