@@ -3,10 +3,23 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
-import {} from "./doctor"
+import {DocService} from "./doctor"
 
 $(document).ready(function() {
   $('#name-form').submit(function(event) {
+    event.preventDefault();
+    let name = $('#name').val();
+    let count = $('#count').val();
+console.log(name);
+    let docService = new DocService();
+    let promise = docService.getDocsByName(name, count);
 
+    promise.then(function(response) {
+      let body = JSON.parse(response);
+      let docService = new DocService();
+      $('.name').append(docService.printName(body));
+    }, function(error) {
+      $('.error').text(`There was an error processing your request: ${error.message}`);
+    });
   });
 });
