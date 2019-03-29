@@ -17,8 +17,9 @@ console.log(name);
     promise.then(function(response) {
       let body = JSON.parse(response);
       let docService = new DocService();
-      $('.firstName').append(docService.printFirstName(body));
-      $('.lastName').append(docService.printLastName(body));
+      $('.name').prepend(docService.printName(body));
+      $('.address').prepend(docService.printAddress(body));
+      $('.accepts').prepend(docService.printAcceptPat(body));
     }, function(error) {
       $('.error').text(`There was an error processing your request: ${error.message}`);
     });
