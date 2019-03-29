@@ -4,7 +4,7 @@ export class DocService{
   getDocsByName(name, count) {
    return new Promise(function(resolve, reject) {
      let request = new XMLHttpRequest();
-     let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${name}&location=37.773%2C-122.413%2C100&skip=0&limit=${count}&user_key=${process.env.exports.apiKey}`;
+     let url = `https://api.betterdoctor.com/2016-03-01/doctors?name=${name}&location=47.611%2C-122.340%2C090&skip=0&limit=${count}&user_key=${process.env.exports.apiKey}`;
      request.onload = function() {
        if (this.status === 200) {
          resolve(request.response);
@@ -16,6 +16,22 @@ export class DocService{
      request.send();
    });
  }
+
+ getDocsByPractice(practice, count) {
+  return new Promise(function(resolve, reject) {
+    let request = new XMLHttpRequest();
+    let url = `https://api.betterdoctor.com/2016-03-01/doctors?query=${practice}&location=47.611%2C-122.340%2C090&skip=0&limit=${count}&user_key=${process.env.exports.apiKey}`;
+    request.onload = function() {
+      if (this.status === 200) {
+        resolve(request.response);
+      } else {
+        reject(Error(request.statusText));
+      }
+    }
+    request.open("GET", url, true);
+    request.send();
+  });
+}
 
  printName(response){
     let result = "";
@@ -44,16 +60,30 @@ export class DocService{
       return result;
     }
 
-   printAcceptPat(response){
-    let result = "";
-    for (let i = 0; i < response.data.length; i++) {
-      result += "<li>" + response.data[i].practices[0].accepts_new_patients + "</li><br>";
+    printSite(response){
+       let result = "";
+       for (let i = 0; i < response.data.length; i++) {
+         if(response.data[i].practices[0].website){
+          let temp = "";
+          temp += response.data[i].practices[0].website;
+          result = "<li>" + temp.slice(0,40) + "<li><br>";
+         }else{
+           result += "<li>None<li><br>";
+         }
+         console.log(response.data[i].practices[0].website);
+       }
+       return result;
+     }
+
+    printAcceptPat(response){
+      let result = "";
+      for (let i = 0; i < response.data.length; i++) {
+        if(response.data[i].practices[0].accepts_new_patients === true){
+          result += "<li>Yes<li><br>";
+        }else{
+          result += "<li>No<li><br>";
+        }
+      }
+      return result;
     }
-    return result;
-  }
 }
-
-
-
-
-// https://api.betterdoctor.com/2016-03-01/practices?name=${practice}&location=37.773%2C-122.413%2C100&user_location=37.773%2C-122.413&skip=0&limit=1&user_key=f2f8f15acc3f3990a5e660f0f2aca967
