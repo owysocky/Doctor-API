@@ -2,7 +2,7 @@
 
 #### _3/29/2019_
 
-#### By _**Olha Wysocky and Jared Hanson**_
+#### By _**Olha Wysocky**_
 
 ## Description
 _This is a website to serch for doctors in Portland area._
@@ -42,4 +42,4 @@ _No known bugs._
 MIT
 **
 
-Copyright (c) 2019 **_Olha Wysocky and Jared Hanson_**
+Copyright (c) 2019 **_Olha Wysocky_**
